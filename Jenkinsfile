@@ -27,10 +27,8 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 echo 'Pushing docker image....'
-                if(${env.REGISTRY_USERNAME} && ${env.REGISTRY_PASSWORD}){
-                    sh '/usr/local/bin/docker login $REGISTRY_HOST -u $REGISTRY_USERNAME -p $REGISTRY_PASSWORD'
-                }
-                sh '/usr/local/bin/docker push $REGISTRY_HOST/kube-demo-plugin'
+                sh '/usr/local/bin/docker login ${env.REGISTRY_HOST} -u ${env.REGISTRY_USERNAME} -p ${env.REGISTRY_PASSWORD}'
+                sh '/usr/local/bin/docker push ${env.REGISTRY_HOST}/kube-demo-plugin'
             }
         }
         stage('Deploy to Kubernetes') {
