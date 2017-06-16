@@ -2,12 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-                echo 'Checking out...'
-                checkout scm
-            }
-        }
         stage('Test') {
             steps {
                 echo 'Testing...'
@@ -27,18 +21,18 @@ pipeline {
                 sh '/usr/local/bin/docker build -t dockreg.datamation.gr/kube-demo-plugin .'
             }
         }
-        stage('PuDocker Image') {
+        stage('Push Docker Image') {
             steps {
                 echo 'Pushing docker image....'
                 sh '/usr/local/bin/docker push dockreg.datamation.gr/kube-demo-plugin'
             }
         }
-        stage('Deploy to Kybernetes') {
+        stage('Deploy to Kubernetes') {
             steps {
                 echo 'Deploying....'
             }
         }
-        stage('Service to Kybernetes') {
+        stage('Service to Kubernetes') {
             steps {
                 echo 'Servicing....'
             }
