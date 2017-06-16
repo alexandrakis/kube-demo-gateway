@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        docker  'Private_Docker_Registry'
-    }
+    agent any
 
     stages {
         stage('Test') {
@@ -15,6 +13,7 @@ pipeline {
                 echo 'Building Jar file...'
                 sh '/usr/local/bin/mvn clean package'
                 archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
+                junit 'target/surefire-reports/*.xml'
             }
         }
         stage('Build Docker Image') {
