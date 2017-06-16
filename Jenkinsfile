@@ -8,32 +8,32 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing...'
-                sh mvn clean test
+                mvn clean test
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing...'
-                sh mvn clean test
+                mvn clean test
             }
         }
         stage('Build Jar') {
             steps {
                 echo 'Building Jar file...'
-                sh mvn clean package
+                mvn clean package
                 archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
             }
         }
         stage('Build Docker Image') {
             steps {
                 echo 'Building docker image....'
-                sh docker build -t dockreg.datamation.gr/kube-demo-plugin .
+                docker build -t dockreg.datamation.gr/kube-demo-plugin .
             }
         }
-        stage('Push Docker Image') {
+        stage('PuDocker Image') {
             steps {
                 echo 'Pushing docker image....'
-                sh docker push dockreg.datamation.gr/kube-demo-plugin
+                docker pudockreg.datamation.gr/kube-demo-plugin
             }
         }
         stage('Deploy to Kybernetes') {
