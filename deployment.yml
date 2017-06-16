@@ -1,0 +1,39 @@
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: kube-demo-gateway
+  namespace: default
+  labels:
+    app: kube-demo-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kube-demo-gateway
+  template:
+    metadata:
+      name: kube-demo-gateway
+      creationTimestamp:
+      labels:
+        app: kube-demo-gateway
+    spec:
+      containers:
+      - name: kube-demo-gateway
+        image: dockerregistry.com/kube-demo-gateway:v1
+        terminationMessagePolicy: File
+        imagePullPolicy: Always
+        securityContext:
+          privileged: false
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      imagePullSecrets:
+      - name: localregistry
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+

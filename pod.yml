@@ -1,0 +1,23 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: kube-demo-gateway-1600147234-x5493
+  namespace: default
+  labels:
+    app: kube-demo-gateway
+spec:
+  volumes:
+  containers:
+  - name: kube-demo-gateway
+    image: dockerregistry.com/kube-demo-gateway:v1
+    terminationMessagePolicy: File
+    imagePullPolicy: Always
+    securityContext:
+      privileged: false
+  restartPolicy: Always
+  nodeName: minikube
+  securityContext: {}
+  imagePullSecrets:
+  - name: localregistry
+  schedulerName: default-scheduler
+
