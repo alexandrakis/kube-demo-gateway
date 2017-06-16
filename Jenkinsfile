@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent Private_Docker_Registry
 
     stages {
         stage('Test') {
