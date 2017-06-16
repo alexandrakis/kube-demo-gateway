@@ -21,13 +21,16 @@ pipeline {
                 echo 'Building docker image....'
                 sh '/usr/local/bin/docker build -t kube-demo-plugin .'
                 echo 'Taging docker image....'
-                sh '/usr/local/bin/docker build -t dockreg.datamation.gr/kube-demo-plugin .'
+                sh '/usr/local/bin/docker build -t $REGISTRY_HOST/kube-demo-plugin .'
             }
         }
         stage('Push Docker Image') {
             steps {
                 echo 'Pushing docker image....'
-                sh '/usr/local/bin/docker push dockreg.datamation.gr/kube-demo-plugin'
+                if(${env.REGISTRY_USERNAME} && ${env.REGISTRY_PASSWORD}){
+                    sh '/usr/local/bin/docker login $REGISTRY_HOST -u $REGISTRY_USERNAME -p $REGISTRY_PASSWORD'
+                }
+                sh '/usr/local/bin/docker push $REGISTRY_HOST/kube-demo-plugin'
             }
         }
         stage('Deploy to Kubernetes') {
