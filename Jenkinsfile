@@ -18,6 +18,8 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 echo 'Building docker image....'
+                sh '/usr/local/bin/docker build -t kube-demo-plugin .'
+                echo 'Taging docker image....'
                 sh '/usr/local/bin/docker build -t dockreg.datamation.gr/kube-demo-plugin .'
             }
         }
