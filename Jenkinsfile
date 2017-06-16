@@ -1,7 +1,16 @@
 pipeline {
     agent any
 
+    node {
+        checkout scm
+    }
     stages {
+        stage('Test') {
+            steps {
+                echo 'Testing...'
+                sh mvn clean test
+            }
+        }
         stage('Test') {
             steps {
                 echo 'Testing...'
