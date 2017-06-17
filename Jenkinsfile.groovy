@@ -11,10 +11,11 @@ node {
         env.PATH = "${env.PATH}:/usr/local/bin/docker"
         stage 'Build Docker Image'
         echo 'Building docker image....'
-        def img = docker.build("kube-demo-gateway", '.')
+        String imageName = "kube-demo-gateway:${env.BUILD_NUMBER}"
+        sh "docker build -t ${imageName}  ."
+        def img = docker.image(imageName)
         stage 'Push Docker Image'
         echo 'Pushing docker image....'
-        echo env.PATH
         img.push('latest')
     }
     stage 'Deploy to Kubernetes'
