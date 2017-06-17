@@ -2,6 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 replicaCount: 1
+secret: localregistry
 image:
   repository: dockreg.datamation.gr/kube-demo-gateway
   tag: latest
@@ -31,6 +32,5 @@ resources:
   requests:
     cpu: 100m
     memory: 128Mi
-secret: localregistry
 
 
