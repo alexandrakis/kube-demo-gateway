@@ -13,5 +13,4 @@ spec:
     protocol: TCP
     name: {{ .Values.service.name }}
   selector:
-    app: {{ .Values.fullName }}
-#    app: {{ template "fullname" . }}
+    app: {{ template "fullname" . }}
