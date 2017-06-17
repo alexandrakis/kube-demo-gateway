@@ -1,7 +1,7 @@
 kind: Pod
 apiVersion: v1
 metadata:
-  name: kube-demo-gateway-1600147234-x5493
+  name: kube-demo-gateway
   namespace: default
   labels:
     app: kube-demo-gateway
@@ -9,7 +9,7 @@ spec:
   volumes:
   containers:
   - name: kube-demo-gateway
-    image: dockerregistry.com/kube-demo-gateway:v1
+    image: dockreg.datamation.gr/kube-demo-gateway:v1
     terminationMessagePolicy: File
     imagePullPolicy: Always
     securityContext:

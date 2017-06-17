@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: kube-demo-gateway
-        image: dockerregistry.com/kube-demo-gateway:v1
+        image: dockreg.datamation.gr:5000/kube-demo-gateway:v1
         terminationMessagePolicy: File
         imagePullPolicy: Always
         securityContext:
