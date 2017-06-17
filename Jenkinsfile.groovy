@@ -24,6 +24,4 @@ node {
         echo 'Deploying....'
         sh 'pwd'
         sh 'helm install --replace ./helm'
-    stage 'Service to Kubernetes'
-        echo 'Servicing....'
 }
