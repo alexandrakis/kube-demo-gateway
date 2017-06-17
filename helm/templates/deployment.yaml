@@ -27,6 +27,6 @@ spec:
             port: {{ .Values.service.internalPort }}
         resources:
       imagePullSecrets:
-        - name: {{ .Values.secret }}
+            - name: {{ .Values.secret }}
 
 {{ toYaml .Values.resources | indent 10 }}
