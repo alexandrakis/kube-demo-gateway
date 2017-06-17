@@ -25,7 +25,12 @@ spec:
           httpGet:
             path: /
             port: {{ .Values.service.internalPort }}
+        imagePullSecrets:
+        - name: {{ .Values.imageSecretName }}
         resources:
 {{ toYaml .Values.resources | indent 10 }}
-      imagePullSecrets:
-           - name: {{ .Values.imageSecretName }}
+    strategy:
+      type: RollingUpdate
+      rollingUpdate:
+        maxUnavailable: 1
+        maxSurge: 1
