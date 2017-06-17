@@ -11,8 +11,9 @@ image:
 service:
   name: kube-demo-gateway
   type: NodePort
-  externalPort: 32150
+  externalPort: 8080
   internalPort: 8080
+  nodePort: 32150
 ingress:
   enabled: false
   # Used to create Ingress record (should used with service.type: ClusterIP).
