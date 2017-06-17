@@ -23,5 +23,5 @@ node {
     stage 'Deploy to Kubernetes'
         echo 'Deploying....'
         sh 'pwd'
-        sh 'helm install  ./helm'
+        sh 'helm upgrade  ./helm'
 }
