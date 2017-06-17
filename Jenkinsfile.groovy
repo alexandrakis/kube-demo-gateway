@@ -1,4 +1,7 @@
 node {
+    stage 'Check out'
+    echo 'Checking out...'
+    checkout scm
     stage 'Test'
         echo 'Testing...'
         sh '/usr/local/bin/mvn clean test'
