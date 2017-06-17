@@ -19,14 +19,14 @@ spec:
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
         - containerPort: {{ .Values.service.internalPort }}
-        livenessProbe:
-          httpGet:
-            path: /
-            port: {{ .Values.service.internalPort }}
-        readinessProbe:
-          httpGet:
-            path: /
-            port: {{ .Values.service.internalPort }}
+#        livenessProbe:
+#          httpGet:
+#            path: /
+#            port: {{ .Values.service.internalPort }}
+#        readinessProbe:
+#          httpGet:
+#            path: /
+#            port: {{ .Values.service.internalPort }}
         resources:
 {{ toYaml .Values.resources | indent 10 }}
       imagePullSecrets:
