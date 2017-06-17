@@ -10,7 +10,7 @@ node {
     docker.withRegistry(env.REGISTRY_HOST, 'docker_registry_credentials_id') {
         stage 'Build Docker Image'
         echo 'Building docker image....'
-        def img = docker.build("kube-demo-gateway:${env.BUILD_TAG}", '.')
+        def img = docker.build("kube-demo-gateway:${env.BUILD_NUMBER}", '.')
         stage 'Push Docker Image'
         echo 'Pushing docker image....'
         img.push('latest')
