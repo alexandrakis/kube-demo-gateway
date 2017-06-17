@@ -6,6 +6,7 @@ image:
   repository: dockreg.datamation.gr/kube-demo-gateway
   tag: latest
   pullPolicy: Always
+  secret: localregistry
 service:
   name: kube-demo-gateway
   type: NodePort
@@ -31,4 +32,5 @@ resources:
   requests:
     cpu: 100m
     memory: 128Mi
+
 
