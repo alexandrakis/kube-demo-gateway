@@ -4,7 +4,7 @@
 replicaCount: 1
 image:
   repository: dockreg.datamation.gr:5000/kube-demo-gateway
-  tag: kube-demo-gateway
+  tag: latest
   pullPolicy: Always
 service:
   name: kube-demo-gateway
