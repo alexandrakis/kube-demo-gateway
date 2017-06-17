@@ -19,11 +19,19 @@ spec:
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
         - containerPort: {{ .Values.service.internalPort }}
-#        livenessProbe:
+        livenessProbe:
+          exec:
+            command:
+            - cat
+            - /tmp/healthy
 #          httpGet:
 #            path: /
 #            port: {{ .Values.service.internalPort }}
-#        readinessProbe:
+        readinessProbe:
+          exec:
+            command:
+            - cat
+            - /tmp/healthy
 #          httpGet:
 #            path: /
 #            port: {{ .Values.service.internalPort }}
