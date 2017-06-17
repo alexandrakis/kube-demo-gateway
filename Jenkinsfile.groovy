@@ -14,6 +14,7 @@ node {
         def img = docker.build("kube-demo-gateway", '.')
         stage 'Push Docker Image'
         echo 'Pushing docker image....'
+        echo env.PATH
         img.push('latest')
     }
     stage 'Deploy to Kubernetes'
