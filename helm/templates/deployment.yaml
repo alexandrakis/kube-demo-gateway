@@ -10,7 +10,8 @@ spec:
   template:
     metadata:
       labels:
-        app: {{ template "fullname" . }}
+        app: {{ .Values.fullName }}
+#        app: {{ template "fullname" . }}
     spec:
       containers:
       - name: {{ .Chart.Name }}
