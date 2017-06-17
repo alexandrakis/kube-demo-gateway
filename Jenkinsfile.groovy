@@ -8,7 +8,6 @@ node {
         archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
         junit 'target/surefire-reports/*.xml'
     docker.withRegistry(env.REGISTRY_HOST, 'docker_registry_credentials_id') {
-        echo "Home ${env['user.home']}"
         stage 'Build Docker Image'
         echo 'Building docker image....'
         String imageName = "kube-demo-gateway:${env.BUILD_NUMBER}"
