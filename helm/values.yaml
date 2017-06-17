@@ -4,7 +4,7 @@
 replicaCount: 1
 imageSecretName: localregistry
 image:
-  repository: dockreg.datamation.gr/kube-demo-gateway
+  repository: dockreg.datamation.gr:5000/kube-demo-gateway
   tag: latest
   pullPolicy: Always
 service:
