@@ -5,7 +5,7 @@ replicaCount: 1
 image:
   repository: dockreg.datamation.gr:5000/kube-demo-gateway
   tag: kube-demo-gateway
-  pullPolicy: always
+  pullPolicy: Always
 service:
   name: kube-demo-gateway
   type: ClusterIP
