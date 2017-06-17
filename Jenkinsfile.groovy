@@ -24,9 +24,9 @@ pipeline {
                 sh '/usr/local/bin/docker build -t $REGISTRY_HOST/kube-demo-plugin .'
             }
         }
-        stage('Push Docker Image') {
-            steps {
-                docker.withRegistry(env.REGISTRY_HOST, 'docker_registry_credentials_id') {
+        docker.withRegistry(env.REGISTRY_HOST, 'docker_registry_credentials_id') {
+            stage('Push Docker Image') {
+                steps {
                     echo 'Pushing docker image....'
                     sh '/usr/local/bin/docker push $REGISTRY_HOST/kube-demo-plugin'
                 }
