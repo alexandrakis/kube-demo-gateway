@@ -8,6 +8,7 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
+  - name: kube-demo-gateway
   - port: {{ .Values.service.externalPort }}
     nodePort: {{ .Values.service.externalPort }}
     targetPort: {{ .Values.service.internalPort }}
